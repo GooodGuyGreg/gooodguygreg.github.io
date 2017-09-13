@@ -9,3 +9,19 @@ h1{
     font-size: 400%;
     text-align: center;
 }
+h2{
+    font-family: 'Roboto' , sans-serif
+    font-size: 200%;
+    text-align: center;
+    text-transform: uppercase;
+    color: fire;
+    letter-spacing: 2px
+    width: 100%;
+    padding: 0px 0px;
+    margin: 10px 2px;
+}
+div.velkommen{
+    border: 3px solid fire;
+    border-radius: 13px;
+    max-width
+}

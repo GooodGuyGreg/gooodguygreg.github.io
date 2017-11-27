@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Onkeydown</title>
+
+    <style>
+        div#ball{
+            background-color: #28abe3;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="ball">
+
+    </div>
+
+    <script>
+
+        var ballLeft = 0;
+        var ballTop = 0;
+        var divBall = document.querySelector('#ball');
+
+        document.onkeydown = function (evt) {
+            evt = evt || window.event;
+            if (evt.keyCode === 83){
+
+            ballTop += 30;
+            divBall.style.top = ballTop + "px";
+
+            }
+
+            else if(evt.keyCode === 87){
+
+                ballTop -= 30;
+                divBall.style.top = ballTop + "px";
+
+            }
+            else if (evt.keyCode === 68){
+
+            ballLeft += 30;
+            divBall.style.left = ballLeft + "px";
+
+            }
+
+            else if (evt.keyCode === 65){
+                ballLeft -= 30;
+                divBall.style.left = ballLeft + "px";
+            }
+            else{
+
+            }
+
+        };
+
+        //divBall.style.background = "red";
+
+        //divBall.style.left = "2px";
+
+    </script>
+
+</body>
+</html>

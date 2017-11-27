@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
+
+body{
+    background-color: powderblue;
+    font-family:Indie Flower;
+    font-size: 120%;
+}
+h1{
+    color: red;
+    font-family: Satisfy;
+}
+h2{
+    color: darkorchid;
+    font-family: Satisfy;
+}
+h4{
+    color: darkorange;
+    font-family: Satisfy;
+    font-size: 120%;
+}

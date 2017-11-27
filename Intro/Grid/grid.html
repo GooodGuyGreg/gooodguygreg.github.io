@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sideoppsett</title>
+
+    <style>
+        body{
+            margin: 0;
+            text-align: center;
+        }
+        div.grid{
+            display: grid;
+            grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "aside1"
+            "aside2"
+            "footer"
+            ;
+            grid-gap: 1px;
+        }
+        div.header{
+            background-color: #bb1315;
+            grid-area: header;
+        }
+        div.nav{
+            background-color: #28abe3;
+            grid-area: nav;
+        }
+        div.main{
+            background-color: #37422e;
+            grid-area: main;
+        }
+        div.aside1{
+            background-color: #db3340;
+            grid-area: aside1;
+        }
+        div.aside2{
+            background-color: #886644;
+            grid-area: aside2;
+        }
+        div.footer{
+            background-color: #b89115;
+            grid-area: footer;
+        }
+        @media (min-width: 500px) {
+            div.grid{
+                grid-template-columns: 3fr 1fr;
+                grid-template-areas:
+                "header     header"
+                "nav        nav"
+                "main       aside1"
+                "footer     aside2"
+            ;
+            }
+
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="grid">
+
+    <div class="header">
+        <h1>Grid-side</h1>
+    </div>
+
+    <div class="nav">
+        Meny
+    </div>
+
+    <div class="main">
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos id ipsa nobis? Amet cum, quas?
+            Nemo quis rem unde. Atque dolores ducimus laboriosam laudantium maiores, provident saepe? Est, quisquam.</p>
+        <p>Ab accusantium alias aliquid deserunt ducimus ea est, expedita facilis fugiat id in inventore iure laudantium
+            maxime numquam obcaecati officiis omnis quas quibusdam quo quod sapiente similique voluptatem voluptates
+            voluptatum!</p>
+
+    </div>
+
+    <div class="aside1">
+Aside1
+    </div>
+
+    <div class="aside2">
+aside2
+    </div>
+
+    <div class="footer">
+footer
+    </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

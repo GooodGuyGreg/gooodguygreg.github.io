@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid</title>
+
+    <style>
+        body{
+            margin: 0;
+        }
+        div.grid{
+            display: grid;
+            grid-template-areas:
+                "header"
+                "main"
+                "aside"
+        ;
+        }
+
+        div.header{
+            grid-area: header;
+            background-color: #bb1315;
+
+            height: 200px;
+        }
+
+        div.main{
+            grid-area: main;
+            background-color: #28abe3;
+        }
+
+        div.aside{
+            grid-area: aside;
+            background-color: darkorange;
+
+            height: 200px;
+        }
+
+        @media (min-width: 700px){
+
+            div.grid{
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-areas:
+                    "main header aside";
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid">
+
+    <div class="header">
+        Header
+    </div>
+    <div class="main">
+        Main
+    </div>
+    <div class="aside">
+        Aside
+    </div>
+
+
+
+
+</div>
+
+</body>
+</html>

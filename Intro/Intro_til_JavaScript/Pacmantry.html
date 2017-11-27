@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacman</title>
+    <link rel="stylesheet" href="PacmantryCSS.css">
+
+</head>
+<body>
+
+    <div id="pacman">
+
+    </div>
+
+    <script>
+
+        var pacmanLeft = 0;
+        var pacmanTop = 0;
+        var divpac = document.querySelector('#pacman');
+
+        document.onkeydown = function (evt) {
+            evt = evt || window.event;
+            if (evt.keyCode === 83) {
+
+                pacmanTop += 30;
+                divpac.style.top = pacmanTop + "px";
+
+
+            }
+
+            else if (evt.keyCode === 87) {
+
+                pacmanTop -= 30;
+                divpac.style.top = pacmanTop + "px";
+
+            }
+
+            else if (evt.keyCode === 68) {
+
+                pacmanLeft += 30;
+                divpac.style.left = pacmanLeft + "px";
+
+            }
+
+            else if (evt.keyCode === 65) {
+
+                pacmanLeft -= 30;
+                divpac.style.left = pacmanLeft + "px";
+
+            }
+
+            else{
+
+            }
+
+        };
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrer ny film</title>
+    <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+
+
+
+<div class="skjemapakker">
+    <br>
+    <h1>Regristrer ny film her</h1>
+    <div class="skjemainfo">
+
+    </div>
+
+    <div class="skjemaform">
+        <p>
+            <label>Tittel</label>
+            <input type="text" id="inputTitle">
+        </p>
+        <p>
+            <label>Sjanger</label>
+            <select name="" id="inputGenre">
+            <option value="Action">Action</option>
+            <option value="Drama">Drama</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Eventyr">Eventyr</option>
+            <option value="Komedie">Komedie</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Grøsser">Grøsser</option>
+            </select>
+        </p>
+        <p>
+            <label for="">Årstall</label>
+            <input type="number" id="inputRelease">
+        </p>
+        <p>
+            <label id="outputRating"></label>
+            <input type="range" min="0" max="10" value="0" step="0.1" id="inputRating">
+        </p>
+        <p class="full_bredde">
+            <button id="buttonAdd">Regristrer film</button>
+        </p>
+
+    </div>
+
+        <div class="filmherr">
+    <input type="text" class="filmher" placeholder="Søk etter film her">
+    <br>
+    <button class="sok">Søk</button>
+        </div>
+    <br>
+    <div class="film"style="border:1px solid black;overflow:scroll;overflow-y:scroll;overflow-x:hidden;">
+
+        <h3>Nylig lagt til filmer</h3>
+        <ul class="liste">
+
+        </ul>
+        <hr>
+        <h3>Top 10</h3>
+        <ol class="liste">
+            <li>test</li>
+            <li>test</li>
+        </ol>
+    </div>
+    <br>
+
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyDrUtob6voBiAYMEEqy1vquLwsALXlGm4g",
+        authDomain: "firestore-4190b.firebaseapp.com",
+        databaseURL: "https://firestore-4190b.firebaseio.com",
+        projectId: "firestore-4190b",
+        storageBucket: "firestore-4190b.appspot.com",
+        messagingSenderId: "586871458162"
+    });
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+    var inputTitle      = document.querySelector('#inputTitle');
+    var inputGenre      = document.querySelector('#inputGenre');
+    var inputRelease    = document.querySelector('#inputRelease');
+    var inputRating     = document.querySelector('#inputRating');
+    var outputRating    = document.querySelector('#outputRating');
+    var buttonAdd       = document.querySelector('#buttonAdd');
+    var listeE          = document.querySelector('.liste');
+
+    outputRating.innerHTML = "Vurdering:" + "  " + inputRating.value;
+    inputRating.oninput = function () {
+        outputRating.innerHTML = "Vurdering:" + "  " + inputRating.value;
+    }
+
+    buttonAdd.addEventListener('click', function () {
+        db.collection("filmdb").add({
+            tittel:     inputTitle.value,
+            genre:      inputGenre.value,
+            release:    inputRelease.value,
+            rating:      inputRating.value*1
+        })
+    .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+
+        inputTitle.value = "";
+            inputGenre.value = "";
+            inputRelease.value = "";
+            inputRating.value = 0;
+            outputRating.value = 0;
+    });
+    var ref = db.collection("filmdb");
+
+    ref.onSnapshot(function (data) {
+        listeE.innerHTML = "";
+        var dokumenter = data.docs;
+        for(var x in dokumenter){
+            listeE.innerHTML += "<li>" +  dokumenter [x].data().tittel + "</li>";
+        }
+    })
+
+</script>
+
+</body>
+</html>

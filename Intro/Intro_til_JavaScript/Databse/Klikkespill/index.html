@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Klikkespill</title>
+    <link rel="stylesheet" href="stil.css">
+    <script src="main.js"></script>
+</head>
+<body>
+<div class="pakker">
+    <div class="header">
+        <h1>Klikkespillet</h1>
+    </div>
+
+
+    <input type="text" placeholder="Navnet ditt" class="navn" required>
+    <button class="start" onclick="start()">Start</button>
+
+    <h3 class="klikkverdi">0</h3>
+    <button class="klikk" onclick="klikk()">Klikk her så fort du kan</button>
+
+    <div class="liste">
+        <h2>Topp 20</h2>
+        <ol class="poengliste"></ol>
+    </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

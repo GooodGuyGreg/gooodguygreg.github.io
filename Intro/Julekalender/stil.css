@@ -1,0 +1,31 @@
+body{
+    text-align: center;
+    background-color: green;
+
+}
+
+div.pakker{
+    max-width: 1024px;
+    margin: auto;
+    background-color: whitesmoke;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 40px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+div.Luke{
+    width: 200px;
+    height: 200px;
+    font-size: 170px;
+    background: #551122;
+    color: darkgoldenrod;
+    box-shadow: black 3px 3px 3px;
+    cursor: pointer;
+}
+
+div.Luke:hover{
+    color: darkred;
+}

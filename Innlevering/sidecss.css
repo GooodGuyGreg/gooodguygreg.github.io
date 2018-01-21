@@ -6,8 +6,14 @@ p {
     margin: 10px;
 }
 
+p.link{
+    margin-left: 40%;
+}
+
 p.red{
-    color: darkred;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
 }
 
 hr {
@@ -100,6 +106,7 @@ p{
 
 h1{
     color: #40C337;
+    margin-left: 200px;
 }
 
 div.grid {
@@ -278,4 +285,13 @@ img.rite0{
 
     margin-top: -100px;
     margin-right: 10px;
+}
+
+img.forside{
+    height: 50%;
+    width: 50%;
+    margin-left: 25%;
+
+
+
 }

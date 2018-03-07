@@ -306,15 +306,19 @@
 
 
 
-    <div class="aside1">
-        <button>Topp 10</button>
-    </div>
+
 
     <div class="main">
         <table>
-            <tbody id="brukerskjema">
-                <tr></tr>
-            </tbody>
+            <thead>
+            <tr>
+                <th>Fornavn</th>
+                <th>Etternavn</th>
+
+            </tr>
+            </thead>
+            <tbody id="brukertabell"></tbody>
+
         </table>
     </div>
 </div>
@@ -322,8 +326,6 @@
 
 
 
-<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-firestore.js"></script>
 <script src="main.js" ></script>
 </body>
 </html>

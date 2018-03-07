@@ -36,7 +36,7 @@
     // Initialize Cloud Firestore through Firebase
     let db = firebase.firestore();
     // oppretter kobling til "mappen" (collection) brukere i Firestore.
-    let brukere = db.collection('brukere');
+    let brukere = db.collection('SkiUttøvere');
     //Henter form-elementet "brukerskjema" fra DOM-en
     let brukerskjema = document.querySelector('#brukerskjema');
     //Henter tabell-elementet (tbody) fra DOM-en

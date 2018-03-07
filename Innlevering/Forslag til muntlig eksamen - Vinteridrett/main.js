@@ -7,7 +7,9 @@ firebase.initializeApp({
     messagingSenderId: "586871458162"
 });
 
-let db =            firebase.firestore();
+
+
+
 
 let inputFornavn        = document.querySelector('#inpFornavn');
 let inputEtternavn      = document.querySelector('#inpEtternavn');
@@ -18,55 +20,52 @@ let inputBilde          = document.querySelector('#inputBilde');
 let inputTable          = document.querySelector('#brukersjema');
 let buttonAdd           = document.querySelector('#buttonAdd');
 
-buttonAdd.addEventListener('click', function () {
-    db.collection("SkiUttøvere").add({
-        Fornavn:        inputFornavn.value,
-        Etternavn:      inputEtternavn.value,
-        Gren:           inputGren.value,
-        Nasjonalitet:   inputNasjonalitet.value,
-        Alder:          inputAge.value,
-        Bilde:          inputBilde.value
-    })
-        .then(function (docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
 
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
 
-    inputFornavn.value          = "",
-        inputEtternavn.value    = "",
-        inputGren.value         = "",
-        inputNasjonalitet.value = "",
-        inputAge.value          = "",
-        inputBilde.value        = ""
-})
 
-let ref     = db.collection("SkiUttøvere");
 
-    ref.onSnapshot(function (data) {
-        inputTable.innerHTML = "";
-        let document = data.docs;
-        for(let x in document){
-            inputTable.innerHTML += "<tr>" + "<td>" + document[x].data().Fornavn + "</td>" + "<td>" + document[x].data().Etternavn + "</td>" + "<td>" + document[x].data.Gren + "</td>" + "<td>" + document[x].data.Nasjonalitet + "</td>" + "<td>" + document[x].data.Alder + "</td>" + "</tr>"
+
+
+
+
+
+
+let db                  = firebase.firestore();
+
+let skiuttøver          = db.collection('SkiUttøver');
+
+let utøverskjema        = document.querySelector('#brukerskjema');
+
+let utøvere             = document.querySelector('#brukertabell');
+
+let inpFornavn          = document.querySelector('#inpFornavn');
+let inpEtternavn        = document.querySelector('#inpEtternavn');
+
+utøverskjema.onsubmit = registrerBruker;
+
+function registrerBruker(evt) {
+    evt.preventDefault();
+    skiuttøver.add(
+        {
+            Fornavn:    inpFornavn.value,
+            Etternavn:  inpEtternavn.value
         }
-
-    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    );
+    utøverskjema.reset();
+    inpFornavn.focus();
+}
+skiuttøver.onSnapshot(function (data) {
+    let objekt = data.docs;
+    utøvere.innerHTML = "noe";
+    for (let x in objekt) {
+        let doc = objekt[x].data();
+        utøvere.innerHTML +=`
+        <tr>
+            <td>${doc.Fornavn}</td>
+            <td>${doc.Etternavn}</td>
+        </tr>`
+    }
+});
 
 
 function myFunction() {
@@ -88,6 +87,7 @@ window.onclick = function(event) {
     }
 };
 
+// Get the modal
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
@@ -96,7 +96,7 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal
+// When the user clicks the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
 }
@@ -111,5 +111,7 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-};
+}
+
+
 

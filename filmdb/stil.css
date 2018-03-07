@@ -1,5 +1,5 @@
 body{
-    background-color: orange;
+    background-color: purple;
     margin: 0;
     padding: 15px;
     font-family: "Tempus Sans ITC";
@@ -18,7 +18,7 @@ h1{
 }
 
 .skjemainfo{
-    background-color: darkorange;
+    background-color: purple;
     color: white;
     text-align: center;
     padding: 10px;

@@ -34,7 +34,7 @@
             </select>
         </p>
         <p>
-            <label for="">Årstall</label>
+            <label>Årstall</label>
             <input type="number" id="inputRelease">
         </p>
         <p>
@@ -56,15 +56,27 @@
     <div class="film"style="border:1px solid black;overflow:scroll;overflow-y:scroll;overflow-x:hidden;">
 
         <h3>Nylig lagt til filmer</h3>
+
         <ul class="liste">
 
         </ul>
+
         <hr>
+
         <h3>Top 10</h3>
-        <ol class="liste">
-            <li>test</li>
-            <li>test</li>
-        </ol>
+
+        <ul class="listeEe">
+
+        </ul>
+
+        <hr>
+
+        <h3>Top 10 worst rated</h3>
+
+        <ul class="listeD">
+
+        </ul>
+
     </div>
     <br>
 
@@ -94,8 +106,10 @@
     var outputRating    = document.querySelector('#outputRating');
     var buttonAdd       = document.querySelector('#buttonAdd');
     var listeE          = document.querySelector('.liste');
+    var listeEe         = document.querySelector('.listeEe');
+    var listeD          = document.querySelector('.listeD');
 
-    outputRating.innerHTML = "Vurdering:" + "  " + inputRating.value;
+    outputRating.innerHTML = "Vurdering:" + "  " + inputRating.value*0;
     inputRating.oninput = function () {
         outputRating.innerHTML = "Vurdering:" + "  " + inputRating.value;
     }
@@ -117,10 +131,10 @@
         inputTitle.value = "";
             inputGenre.value = "";
             inputRelease.value = "";
-            inputRating.value = 0;
-            outputRating.value = 0;
+            inputRating.value = "";
+            outputRating.value = "";
     });
-    var ref = db.collection("filmdb");
+    var ref                 = db.collection("filmdb");
 
     ref.onSnapshot(function (data) {
         listeE.innerHTML = "";
@@ -128,6 +142,29 @@
         for(var x in dokumenter){
             listeE.innerHTML += "<li>" +  dokumenter [x].data().tittel + "</li>";
         }
+    })
+
+    var orderQuery          = ref.orderBy("rating", "desc").limit(10);
+
+    //* Dette funker det er bare at rating blir lagret som strings isteden for tall så det blir vanskelig for koding å skjønne at det er tall //*
+
+    orderQuery.onSnapshot(function (data) {
+        listeEe.innerHTML = "";
+        var dokumenter = data.docs;
+        for(var x in dokumenter)(
+            listeEe.innerHTML += "<li>" + dokumenter [x].data().tittel + ":  " + dokumenter[x].data().rating + "</li>"
+        )
+
+    });
+
+
+    var orderQuery          = ref.orderBy("rating", "asc").limit(10);
+
+    orderQuery.onSnapshot(function (data) {
+        listeD.innerHTML = "";
+        var dokumenter = data.docs;
+        for(var x in dokumenter)(
+            listeD.innerHTML += "<li>" + dokumenter [x].data().tittel + ":  " + dokumenter[x].data().rating + "</li>")
     })
 
 </script>

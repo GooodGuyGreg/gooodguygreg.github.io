@@ -30,7 +30,7 @@ ref.onSnapshot(function (data) {
     brukernavnE.innerHTML = "";
     var brukere = data.docs
     for(var x in brukere){
-        listeE.innerHTML += "<li>" + brukere [x].data().Brukernavn + "</li>";
+        listeE.innerHTML += "<li>" + document[x].data().Brukernavn + "</li>";
     }
 
 })

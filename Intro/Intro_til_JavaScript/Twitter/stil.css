@@ -1,0 +1,82 @@
+div.grid{
+    display: grid;
+    grid-template-areas: "header" "main" "aside1" "aside2";
+    grid-gap: 1px;
+}
+
+div.header{
+    background-color: darkred;
+    grid-area: header;
+    text-align: center;
+
+}
+
+div.text{
+    background-color: grey;
+    grid-area: text;
+}
+
+div.button{
+    grid-area: button;
+}
+
+div.main{
+    background-color: darkorange;
+    grid-area: main;
+}
+div.aside1{
+    background-color: darkblue;
+    grid-area: aside1;
+}
+
+div.aside2{
+    background-color: #033b42;
+    grid-area: aside2;
+}
+
+@media (min-width: 500px) {
+    div.grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+                "aside1"
+                "header"
+                "text"
+                "button"
+                "main"
+                "aside2";
+    }
+
+}
+
+@media (min-width: 700px){
+    div.grid {
+        grid-template-columns: 150px 2fr 150px;
+        grid-template-areas:
+            "header header   header"
+            "aside1 text     aside2"
+            "aside1 button   aside2"
+            "aside1 main     aside2";
+
+    }
+
+}
+
+@media (min-width: 1000px){
+    div.grid {
+        grid-template-columns: 150px 500px 150px;
+        grid-template-areas:
+            "header header header"
+            "aside1 text   aside2"
+            "aside1 button  aside2"
+            "aside1 main   aside2";
+        max-width: 45%;
+        margin: auto;
+        text-align: center;
+    }
+
+}
+
+input.tweet{
+    height: 100%;
+}

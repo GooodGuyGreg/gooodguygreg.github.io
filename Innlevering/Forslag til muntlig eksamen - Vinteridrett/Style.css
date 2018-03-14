@@ -36,7 +36,7 @@ div.main{
         display: grid;
         grid-template-columns: 1fr;
         grid-template-areas:
-                "header"
+                "main"
                 "main"
                 "aside1";
     }
@@ -48,7 +48,7 @@ div.main{
         display: grid;
         grid-template-columns: 1fr 2fr 2fr;
         grid-template-areas:
-            "header header header"
+            "aside1 main main"
             "aside1 main main"
             "aside1 main main";
     }
@@ -60,7 +60,7 @@ div.main{
         display: grid;
         grid-template-columns: 1fr 3fr 3fr;
         grid-template-areas:
-            "header header header"
+            "aside1 main main"
             "aside1 main main"
             "aside1 main main";
     }
@@ -116,5 +116,12 @@ input.utøver{
 
 .show {display:block;}
 
+div.sdiv{
+    width: 100%;
+}
+
+table#search{
+    width: 20px;
+}
 
 

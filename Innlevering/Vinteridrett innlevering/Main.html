@@ -22,7 +22,7 @@
             </div>
 
         </div>
-        <input class="utøver" type="text" placeholder="Søk etter utøver">
+        <input id="utøver" type="text" placeholder="Søk etter utøver" onkeyup="myFunction()">
         <button id="myBtn">Registrer Utøver</button>
         <div id="myModal" class="modal">
             <div class="modal-content">
@@ -295,19 +295,19 @@
                     <input type="number" id="inputAge">
                     <br><br>
                     <label>Bilde</label>
-                    <input type="file" id="inputBilde" placeholder="Legg til bilde">
+                    <input type="text" id="inputBilde" placeholder="Legg til bilde">
                     <br><br>
                     <button id="buttonAdd" type="submit">Legg til utøver</button>
                 </form>
             </div>
         </div>
+    </div>
 
-        <div class="aside1">
-            <button class="topp10">Topp 10</button>
-        </div>
+
 
         <div class="main">
-            <table>
+            <div id="table">
+            <table id="search">
                 <thead>
                 <tr>
                     <th>   Fornavn  </th>
@@ -320,6 +320,11 @@
                 </thead>
                 <tbody id="brukertabell"></tbody>
             </table>
+        </div>
+        </div>
+
+        <div class="aside1">
+            <button class="topp10">Topp 10</button>
         </div>
 
 

@@ -51,7 +51,7 @@ function registrerBruker(evt) {
             Etternavn:  inpEtternavn.value,
             Gren:       inpGren.value,
             Nasjon:     inpNasjon.value,
-            Alder:      inpAlder.value,
+            Alder:      inpAlder.value*1,
             Bilde:      inpBilde.value
         }
     );
@@ -75,24 +75,100 @@ brukere.onSnapshot(function (data) {
                 </tr>
                 </div>`
     }
-});
+})
 
+let srtFornavn = document.querySelector("#srtNameFornavn");
 
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+srtFornavn.onclick = function(){
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
+    let orderQueryName = brukere.orderBy("Fornavn", "asc");
 
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
+    orderQueryName.onSnapshot(function(data){
+        brukertabell.innerHTML = "";
+        let objekt = data.docs;
+        for(let x in objekt){
+            let doc = objekt[x].data();
+            brukertabell.innerHTML +=`
+                <tr>
+                    <td>${doc.Fornavn}</td>
+                    <td>${doc.Etternavn}</td>
+                    <td>${doc.Gren}</td>
+                    <td>${doc.Nasjon}</td>
+                    <td>${doc.Alder}</td>
+                    <td><img src=${doc.Bilde}></td>
+                </tr>`
     }
+    });
+};
+
+let srtEtternavn = document.querySelector("#srtNameEtternavn");
+
+srtEtternavn.onclick = function(){
+
+    let orderQueryName = brukere.orderBy("Etternavn", "asc");
+
+    orderQueryName.onSnapshot(function(data){
+        brukertabell.innerHTML = "";
+        let objekt = data.docs;
+        for(let x in objekt){
+            let doc = objekt[x].data();
+            brukertabell.innerHTML +=`
+                <tr>
+                    <td>${doc.Fornavn}</td>
+                    <td>${doc.Etternavn}</td>
+                    <td>${doc.Gren}</td>
+                    <td>${doc.Nasjon}</td>
+                    <td>${doc.Alder}</td>
+                    <td><img src=${doc.Bilde}></td>
+                </tr>`
+        }
+    });
+};
+
+let srtNasjonalitet = document.querySelector("#srtNameNasjonalitet");
+
+srtNasjonalitet.onclick = function(){
+
+    let orderQueryName = brukere.orderBy("Nasjon", "asc");
+
+    orderQueryName.onSnapshot(function(data){
+        brukertabell.innerHTML = "";
+        let objekt = data.docs;
+        for(let x in objekt){
+            let doc = objekt[x].data();
+            brukertabell.innerHTML +=`
+                <tr>
+                    <td>${doc.Fornavn}</td>
+                    <td>${doc.Etternavn}</td>
+                    <td>${doc.Gren}</td>
+                    <td>${doc.Nasjon}</td>
+                    <td>${doc.Alder}</td>
+                    <td><img src=${doc.Bilde}></td>
+                </tr>`
+        }
+    });
+};
+
+let srtAlder = document.querySelector("#srtNameAlder");
+
+srtAlder.onclick = function(){
+
+    let orderQueryName = brukere.orderBy("Alder", "asc");
+
+    orderQueryName.onSnapshot(function(data){
+        brukertabell.innerHTML = "";
+        let objekt = data.docs;
+        for(let x in objekt){
+            let doc = objekt[x].data();
+            brukertabell.innerHTML +=`
+                <tr>
+                    <td>${doc.Fornavn}</td>
+                    <td>${doc.Etternavn}</td>
+                    <td>${doc.Gren}</td>
+                    <td>${doc.Nasjon}</td>
+                    <td>${doc.Alder}</td>
+                    <td><img src=${doc.Bilde}></td>
+                </tr>`
+        }
+    });
 };

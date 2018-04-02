@@ -10,7 +10,7 @@
 <div class="grid">
     <div class="header">
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Velg Gren</button>
+            <button onclick="dropdownKnapp()" class="dropbtn">Velg Gren</button>
             <div id="myDropdown" class="dropdown-content">
                 <a href="#home">Langrenn</a>
                 <a href="#about">Skihopp</a>
@@ -22,16 +22,19 @@
             </div>
 
         </div>
-        <input id="utøver" type="text" placeholder="Søk etter utøver" onkeyup="myFunction()">
+        <input id="utover" type="text" placeholder="Søk etter utøver" onkeyup="myFunction()">
         <button id="myBtn">Registrer Utøver</button>
         <div id="myModal" class="modal">
+                <form id="brukerskjema">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <form id="brukerskjema">
+                <div class="fornavn">
                     <input id="inpFornavn" type="text" placeholder="Fornavn" required>
+                </div>
+                <div class="etternavn">
                     <input id="inpEtternavn" type="text" placeholder="Etternavn" required>
-                    <br>
-                    <label>Gren:</label>
+                </div>
+                <div class="gren">
                     <select id="inputGren">
                         <option value="">Velg gren</option>
                         <option value="Langrenn">Langrenn</option>
@@ -39,7 +42,8 @@
                         <option value="Skiskyting">Skiskyting</option>
                         <option value="Slalåm">Slalåm</option>
                     </select>
-                    <label>Nasjonalitet:</label>
+                </div>
+                <div class="nasjon">
                     <select id="inputNasjon">
                         <option value="">Velg land</option>
                         <option value="Afganistan">Afghanistan</option>
@@ -290,32 +294,32 @@
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
-                    <br><br>
-                    <label>Alder:</label>
-                    <input type="number" id="inputAge">
-                    <br><br>
-                    <label>Bilde</label>
-                    <input type="text" id="inputBilde" placeholder="Legg til bilde">
-                    <br><br>
+                </div>
+                <div class="alder">
+                    <input type="number" id="inputAge" placeholder="Alder" required min="1" max="99">
+                </div>
+                <div class="bilde">
+                    <input type="text" id="inputBilde" placeholder="Legg til bildeadresse" required>
+                </div>
+                <div class="button">
                     <button id="buttonAdd" type="submit">Legg til utøver</button>
+                </div>
                 </form>
             </div>
         </div>
     </div>
-
-
 
         <div class="main">
             <div id="table">
             <table id="search">
                 <thead>
                 <tr>
-                    <th>   Fornavn  </th>
-                    <th>Etternavn   </th>
-                    <th>Gren        </th>
-                    <th>Nasjonalitet</th>
-                    <th>Alder       </th>
-                    <th>Bilde       </th>
+                    <th> <button id="srtNameFornavn">Fornavn</button>           </th>
+                    <th><button id="srtNameEtternavn">Etternavn</button>        </th>
+                    <th>Gren                                                    </th>
+                    <th><button id="srtNameNasjonalitet">Nasjonalitet</button>  </th>
+                    <th><button id="srtNameAlder">Alder</button>                </th>
+                    <th>Bilde                                                   </th>
                 </tr>
                 </thead>
                 <tbody id="brukertabell"></tbody>
@@ -331,5 +335,27 @@
         <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
 <script src="main.js"></script>
+
+    <script>
+        function dropdownKnapp() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+
+                let dropdowns = document.getElementsByClassName("dropdown-content");
+                let i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    let openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        };
+    </script>
+
 </body>
 </html>
